@@ -1,0 +1,11 @@
+{
+	"PartProp":  {"Mass":  1e6, "Density": 2329, "Stat_Perm": 11.9, "T_INT": 25, "datafile": "Si.csv"},
+	"LaserProp": {"Freq": 200e3, "WL": 354e-9, "EL": 500e-6,"Time":10e-9, "waist":0.0718},
+	"T_COM": 20e-3,
+	"T_ENV": 20,
+	"a1": 2,
+	"a2": 1.6,
+	"Pressure": 1e-13,
+	"Phi0": 4,
+	"Drift": 10e-9
+}
