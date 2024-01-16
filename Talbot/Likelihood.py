@@ -88,7 +88,12 @@ def Like(expt,Talbot="Mie",Decoherence=True,Therm=True,CSL="Extended",L=None,R=N
 
     # Build w(x|theta)
     # =======================================================================================================================
-    outputs = np.array([1+2*sum([T_dict[n]*exp(lnR_dec[n])*exp(lnR_CSL[n])* np.cos(n*2*pi*x/expt.D) for n in Ns[1:]]) for x in expt.xaxis]) * expt.mass/(sqrt(2*pi)*expt.sigmap*(expt.t1+expt.t2)) # list-comp
+    joint = np.array([1+2*sum([T_dict[n]*exp(lnR_dec[n])*exp(lnR_CSL[n])* np.cos(n*2*pi*x/expt.D) for n in Ns[1:]]) for x in expt.xaxis]) * expt.mass/(sqrt(2*pi)*expt.sigmap*(expt.t1+expt.t2)) # list-comp
     #outputs = (1+2*sum([T_dict[n]*exp(lnR_dec[n]+lnR_CSL[n][None,:,:]) * np.cos(n*2*pi*xaxis[:,None,None]/expt.D) for n in Ns[1:]])) * expt.mass/(sqrt(2*pi)*expt.sigmap*(expt.t1+expt.t2))   # numpy broadcasting (marginally faster ~2%)
-    return outputs
+    
+    # See Sivia and Skilling Eqs.(1.1) -> (1.4) for details
+    prob_theta = np.trapz(joint,expt.xaxis,axis=0)
+    conditional = joint/prob_theta
+    
+    return conditional
 
