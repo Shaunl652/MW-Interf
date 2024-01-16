@@ -45,7 +45,7 @@ Init_Time = time.time()
 
 
 # Makes the folder to store the mass dependant info and Lambda estimate
-npy_path = f"NPYs/{sys.argv[1]}/{sys.argv[2]}/Mass"
+npy_path = f"NPYs/{sys.argv[1]}/{sys.argv[2]}/Mass/Theta0"
 Path(npy_path).mkdir(parents=True, exist_ok=True) 
 
 
