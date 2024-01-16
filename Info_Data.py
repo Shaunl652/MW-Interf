@@ -22,7 +22,6 @@ import Bayesian.Info as Info
 
 prm_file = "Scenarios/"+sys.argv[1]+".json"
 
-# Makes the folder to store the mass dependant info and Lambda estimate
 npy_path = f"NPYs/{sys.argv[1]}/{sys.argv[2]}/Data"
 Path(npy_path).mkdir(parents=True, exist_ok=True) 
 
@@ -70,37 +69,37 @@ M = 200
 for n in Ns:
     print(n)
     start_time = time.time()
-    if sys.argv[3] == 'Theta':
-        EHLoop = []
-        for m in range(M):
-            x_data = choices(expt.xaxis,weights=prob,k=n)
-            # Finds the posterior from the data x_data
-            logLikelihood = sum((np.log10(lkhd_dict[x]) for x in x_data))
-            # Introduces a reduction term to avoid numerical errors, is canceld out in the normalisation
-            kappa = np.max(logLikelihood)
-            logLikelihood = logLikelihood - kappa
-            # Finds the posterioir
-            Post = np.exp(logJ + logLikelihood)
-            # Normalises the posterior
-            Evid = np.trapz(np.trapz(Post, r_C_axis,axis=1),lam_axis)
-            Post /= Evid
+    # if sys.argv[3] == 'Theta':
+    #     EHLoop = []
+    #     for m in range(M):
+    #         x_data = choices(expt.xaxis,weights=prob,k=n)
+    #         # Finds the posterior from the data x_data
+    #         logLikelihood = sum((np.log10(lkhd_dict[x]) for x in x_data))
+    #         # Introduces a reduction term to avoid numerical errors, is canceld out in the normalisation
+    #         kappa = np.max(logLikelihood)
+    #         logLikelihood = logLikelihood - kappa
+    #         # Finds the posterioir
+    #         Post = np.exp(logJ + logLikelihood)
+    #         # Normalises the posterior
+    #         Evid = np.trapz(np.trapz(Post, r_C_axis,axis=1),lam_axis)
+    #         Post /= Evid
     
 
 
-            # Get the information
-            EHLoop.append(Info.H(Post,Prior))
-        Er.append(np.var(EHLoop))
-        EH.append(np.mean(EHLoop))
-    else:
-        Info_Out,var  = Info.Utility(lkhd, Prior, expt.xaxis)
-        EH.append(Info_Out) # Saves the expected info values
-        Er.append(var)
+    #         # Get the information
+    #         EHLoop.append(Info.H(Post,Prior))
+    #     Er.append(np.var(EHLoop))
+    #     EH.append(np.mean(EHLoop))
+    # else:
+    Info_Out,var  = Info.Utility(lkhd, Prior, expt.xaxis)
+    EH.append(Info_Out) # Saves the expected info values
+    Er.append(var)
     
     print(f'Finished loop in {(time.time()-start_time)/60:.2f} mins')
 
-take = sys.argv[3]
-np.save(f"{npy_path}/Info{take}.npy",np.array(EH))
-np.save(f"{npy_path}/Err_{take}.npy",np.array(Er))
+
+np.save(f"{npy_path}/Info.npy",np.array(EH))
+np.save(f"{npy_path}/Err.npy",np.array(Er))
 
 
 
