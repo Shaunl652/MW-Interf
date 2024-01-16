@@ -73,13 +73,11 @@ for m in Ms:
     else:
         sys.exit('Unrecognised prior type')
     
-    if sys.argv[3]=='THETA':
-        continue
-    else:
-        # Get the information from the MCMC if we are not plotting the 
-        Info_Out,var  = Utility(lkhd, Prior, expt.xaxis)
-        Info_Vals.append(Info_Out) # Saves the expected info values
-        Info_Vars.append(var) # Saves the variance values
+
+    # Get the information from the MCMC if we are not plotting the 
+    Info_Out,var  = Utility(lkhd, Prior, expt.xaxis)
+    Info_Vals.append(Info_Out) # Saves the expected info values
+    Info_Vars.append(var) # Saves the variance values
     
     # Now we need to see the values of lambda_c
     Prior /= np.trapz(np.trapz(Prior,lam_axis,axis=0),r_C_axis)
