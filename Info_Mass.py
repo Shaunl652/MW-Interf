@@ -1,5 +1,5 @@
 # =============================================================================
-# Finds the expected information and Lambda as a function of Mass
+# Finds the expected information and Lambda as a function of Mass for MCMC
 # Reads in the scenario name, and the type of prior
 # =============================================================================
 
@@ -88,8 +88,8 @@ for m in Ms:
     
     print(f'Finished loop in {(time.time()-start_time)/60:.2f} mins')
     
-np.save(f"{npy_path}/Info_vals.npy",np.array(Info_Vals))
-np.save(f"{npy_path}/Info_Vars.npy",np.array(Info_Vars))
+np.save(f"{npy_path}/Info_vals_MCMC.npy",np.array(Info_Vals))
+np.save(f"{npy_path}/Info_Vars_MCMC.npy",np.array(Info_Vars))
 np.save(f"{npy_path}/Mass.npy",Ms)
 
 

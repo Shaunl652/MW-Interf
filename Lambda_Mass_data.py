@@ -21,6 +21,7 @@ from Experiment import Experiment
 import time
 from pathlib import Path
 from Optomise import OptFunc
+from Bayesian.Info import H
 
 
 
@@ -41,7 +42,7 @@ Init_Time = time.time()
 
 
 # Makes the folder to store the mass dependant info and Lambda estimate
-npy_path = f"NPYs/{sys.argv[1]}/{sys.argv[2]}/Mass/Theta0"
+npy_path = f"NPYs/{sys.argv[1]}/{sys.argv[2]}/Mass/"
 Path(npy_path).mkdir(parents=True, exist_ok=True) 
 
 
@@ -123,8 +124,8 @@ for m in Ms:
     
     print(f'Finished loop in {(time.time()-start_time)/60:.2f} mins')
     
-np.save(f"{npy_path}/Info_vals.npy",np.array(Info_Vals))
-np.save(f"{npy_path}/Info_Vars.npy",np.array(Info_Vars))
-np.save(f"{npy_path}/Lamb_Vals.npy",np.array(lamb_vals))
-np.save(f"{npy_path}/Lamb_Vars.npy",np.array(lamb_vars))
+np.save(f"{npy_path}/Info_vals_THETA.npy",np.array(Info_Vals))
+np.save(f"{npy_path}/Info_Vars_THETA.npy",np.array(Info_Vars))
+np.save(f"{npy_path}/Lamb_Vals_THETA.npy",np.array(lamb_vals))
+np.save(f"{npy_path}/Lamb_Vars_THETA.npy",np.array(lamb_vars))
 np.save(f"{npy_path}/Mass.npy",Ms)

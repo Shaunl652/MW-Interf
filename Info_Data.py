@@ -90,10 +90,12 @@ for n in Ns:
             EHLoop.append(Info.H(Post,Prior))
         Er.append(np.var(EHLoop))
         EH.append(np.mean(EHLoop))
-    else:
+    elif sys.argv=='MCMC':
         Info_Out,var  = Info.Utility(lkhd, Prior, expt.xaxis)
         EH.append(Info_Out) # Saves the expected info values
         Er.append(var)
+    else:
+        sys.exit(f'Unrecognised {sys.argv[3]} use "THETA" to set theta=0 or "MCMC" to use Markov Chain method')
     
     print(f'Finished loop in {(time.time()-start_time)/60:.2f} mins')
 
