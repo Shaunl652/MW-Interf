@@ -17,35 +17,35 @@ Path(Grp_Path).mkdir(parents=True, exist_ok=True)
 
 # Next we read in all the data
 # Read in Expt stuff first
-NPY_Path = "NPYs/MAQRO8_Opt/Experimental/Mass"
+NPY_Path = "NPYs/MAQRO8/Experimental/Mass"
 
 ExptMCxaxis = np.load(f'{NPY_Path}/Mass.npy') # Masses where we measured <H>_theta
-ExptMCdata = np.load(f'{NPY_Path}/InfoMCMC.npy') # <H>_theta
-ExptMCstd = np.load(f'{NPY_Path}/ErrsMCMC.npy') # Errors in <H>_theta
+ExptMCdata  = np.load(f'{NPY_Path}/Info_vals_MCMC.npy') # <H>_theta
+ExptMCstd   = np.load(f'{NPY_Path}/Info_Vars_MCMC.npy') # Errors in <H>_theta
 ExptMCup_bound = ExptMCdata + np.sqrt(ExptMCstd)
 ExptMClo_bound = ExptMCdata - np.sqrt(ExptMCstd)
 
 
 # Next we laod and plot the data from P(X|theta=0)
-ExptTHxaxis = np.load(f'{NPY_Path}/MassTheta.npy')
-ExptTHdata = np.load(f'{NPY_Path}/InfoTheta.npy')
-ExptTHstd = np.load(f'{NPY_Path}/ErrsTheta.npy')
+ExptTHxaxis = np.load(f'{NPY_Path}/Mass.npy')
+ExptTHdata  = np.load(f'{NPY_Path}/Info_vals_THETA.npy')
+ExptTHstd   = np.load(f'{NPY_Path}/Info_Vars_THETA.npy')
 ExptTHup_bound = ExptTHdata + np.sqrt(ExptTHstd)
 ExptTHlo_bound = ExptTHdata - np.sqrt(ExptTHstd)
 
 # Then the MDIP
-NPY_Path = "NPYs/MAQRO8_Opt/MDIP/Mass"
+NPY_Path = "NPYs/MAQRO8/MDIP/Mass"
 MDIPMCxaxis = np.load(f'{NPY_Path}/Mass.npy') # Masses where we measured <H>_theta
-MDIPMCdata = np.load(f'{NPY_Path}/InfoMCMC.npy') # <H>_theta
-MDIPMCstd = np.load(f'{NPY_Path}/ErrsMCMC.npy') # Errors in <H>_theta
+MDIPMCdata  = np.load(f'{NPY_Path}/Info_vals_MCMC.npy') # <H>_theta
+MDIPMCstd   = np.load(f'{NPY_Path}/Info_Vars_MCMC.npy') # Errors in <H>_theta
 MDIPMCup_bound = MDIPMCdata + np.sqrt(MDIPMCstd)
 MDIPMClo_bound = MDIPMCdata - np.sqrt(MDIPMCstd)
 
 
 # Next we laod and plot the data from P(X|theta=0)
-MDIPTHxaxis = np.load(f'{NPY_Path}/MassTheta.npy')
-MDIPTHdata = np.load(f'{NPY_Path}/InfoTheta.npy')
-MDIPTHstd = np.load(f'{NPY_Path}/ErrsTheta.npy')
+MDIPTHxaxis = np.load(f'{NPY_Path}/Mass.npy')
+MDIPTHdata  = np.load(f'{NPY_Path}/Info_vals_THETA.npy')
+MDIPTHstd   = np.load(f'{NPY_Path}/Info_Vars_THETA.npy')
 MDIPTHup_bound = MDIPTHdata + np.sqrt(MDIPTHstd)
 MDIPTHlo_bound = MDIPTHdata - np.sqrt(MDIPTHstd)
 
