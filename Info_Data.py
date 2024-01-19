@@ -22,7 +22,6 @@ import Bayesian.Info as Info
 
 prm_file = "Scenarios/"+sys.argv[1]+".json"
 
-# Makes the folder to store the mass dependant info and Lambda estimate
 npy_path = f"NPYs/{sys.argv[1]}/{sys.argv[2]}/Data"
 Path(npy_path).mkdir(parents=True, exist_ok=True) 
 
@@ -70,7 +69,7 @@ M = 200
 for n in Ns:
     print(n)
     start_time = time.time()
-    if sys.argv[3] == 'Theta':
+    if sys.argv[3] == 'Theta': # Runs this bloack to see the resutls if theta=0
         EHLoop = []
         for m in range(M):
             x_data = choices(expt.xaxis,weights=prob,k=n)
@@ -91,16 +90,18 @@ for n in Ns:
             EHLoop.append(Info.H(Post,Prior))
         Er.append(np.var(EHLoop))
         EH.append(np.mean(EHLoop))
-    else:
+    elif sys.argv=='MCMC':
         Info_Out,var  = Info.Utility(lkhd, Prior, expt.xaxis)
         EH.append(Info_Out) # Saves the expected info values
         Er.append(var)
+    else:
+        sys.exit(f'Unrecognised {sys.argv[3]} use "THETA" to set theta=0 or "MCMC" to use Markov Chain method')
     
     print(f'Finished loop in {(time.time()-start_time)/60:.2f} mins')
 
-take = sys.argv[3]
-np.save(f"{npy_path}/Info{take}.npy",np.array(EH))
-np.save(f"{npy_path}/Err_{take}.npy",np.array(Er))
+
+np.save(f"{npy_path}/Info_Vals_{sys.argv[3]}.npy",np.array(EH))
+np.save(f"{npy_path}/Info_Vars_{sys.argv[3]}.npy",np.array(Er))
 
 
 

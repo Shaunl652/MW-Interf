@@ -1,4 +1,5 @@
 # =============================================================================
+# Plots the Fig.3
 # Arguments should be  SCENARIO and PRIOR TYPE
 # =============================================================================
 
@@ -19,6 +20,7 @@ Path(Grp_Path).mkdir(parents=True, exist_ok=True)
 NPY_Path = "NPYs/MAQRO8/Experimental/Data"
 
 xaxis = [*range(0,16000,200)]
+
 
 # Next we laod and plot the data from P(X|theta=0)
 

@@ -20,11 +20,6 @@ from Talbot.CSL.Coefficients import lnR_CSL_func
 from scipy.constants import atomic_mass as AMU
 from scipy.interpolate import interp2d
 
-CSLVals = np.load('NPYs/CSLVis.npy')
-InterpX = np.logspace(6,10,51)*AMU # masses used in interpolation data
-InterpY = np.linspace(0.01,3,51) # times used in interpolation data
-
-CSLInterp = interp2d(InterpX,InterpY,CSLVals)
 
 
 def OptFunc(expt,idx_plot=0):
