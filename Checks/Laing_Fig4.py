@@ -1,6 +1,5 @@
 # =============================================================================
-# Plots the Info or lambda as a funtion of mass
-# Arguments should be  SCENARIO and PRIOR TYPE
+# Plots the Info and lambda_c as a funtion of mass
 # =============================================================================
 
 import numpy as np
