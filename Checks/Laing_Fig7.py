@@ -9,7 +9,7 @@ import numpy as np
 #import sys
 import matplotlib.pyplot as plt
 from pathlib import Path
-
+plt.rcParams.update({'font.size': 15})
 
 
 # First we set up the path where to save the graphs
@@ -18,12 +18,13 @@ Path(Grp_Path).mkdir(parents=True, exist_ok=True)
 
 Drift_vals = ['01','1','10','30','100']
 labels = ['0.1 nm','1 nm','10 nm','30 nm','100 nm']
+fig,axes = plt.subplots()
 
 for label,DV in zip(labels,Drift_vals):
 
     # Next we read in all the data
     # Read in Expt stuff first
-    NPY_Path = f"NPYs/Drift{DV}/Experimental/Mass"
+    NPY_Path = f"NPYs/Drift{DV}/MDIP/Mass"
     
     
     # Next we laod and plot the data from P(X|theta=0)
@@ -36,14 +37,14 @@ for label,DV in zip(labels,Drift_vals):
     
     # Now we can start plotting
     
-    fig,axes = plt.subplots()
+    
     
     # First plot the experimental then MDIP
     # Do MCMC First
     axes.plot(xaxis,data,label=label)
     axes.fill_between(xaxis, up_bound,lo_bound, alpha=0.2)
     
-    axes.set(title='(a)',xlabel='Mass [u]',xscale='log',ylabel='$ \\langle \\mathcal{H} \\rangle $')
+    axes.set(xlabel='Mass [u]',xscale='log',ylabel='$ \\langle \\mathcal{H} \\rangle $')
     axes.grid(which='both')
     
 h,l = axes.get_legend_handles_labels()
@@ -52,6 +53,6 @@ fig.legend(h,l)
 
 fig.tight_layout()
 
-fig.savefig(f'{Grp_Path}/Info_Mass.png')
+fig.savefig(f'{Grp_Path}/Fig7.png')
 
-fig.savefig(f'{Grp_Path}/Info_Mass.pdf')
+fig.savefig(f'{Grp_Path}/Fig7.pdf')

@@ -9,7 +9,7 @@ import numpy as np
 #import sys
 import matplotlib.pyplot as plt
 from pathlib import Path
-
+plt.rcParams.update({'font.size': 12})
 
 
 # First we set up the path where to save the graphs
@@ -56,8 +56,8 @@ fig.legend(h,l)
 
 fig.tight_layout()
 
-fig.savefig(f'{Grp_Path}/lambda_c_vs_mass.png')
+fig.savefig(f'{Grp_Path}/Fig5.png')
 
-fig.savefig(f'{Grp_Path}/lambda_c_vs_mass.pdf')
+fig.savefig(f'{Grp_Path}/Fig5.pdf')
 
 

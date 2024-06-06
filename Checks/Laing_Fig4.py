@@ -6,7 +6,7 @@ import numpy as np
 #import sys
 import matplotlib.pyplot as plt
 from pathlib import Path
-
+plt.rcParams.update({'font.size': 15})
 
 
 # First we set up the path where to save the graphs
@@ -51,7 +51,7 @@ MDIPTHlo_bound = MDIPTHdata - np.sqrt(MDIPTHstd)
 
 # Now we can start plotting
 
-fig,axes = plt.subplots(ncols=2,figsize=(10,5))
+fig,axes = plt.subplots(nrows=2,figsize=(7,10))
 
 # First plot the experimental then MDIP
 # Do MCMC First
@@ -78,9 +78,9 @@ fig.legend(h,l)
 
 fig.tight_layout()
 
-fig.savefig(f'{Grp_Path}/Info_Mass.png')
+fig.savefig(f'{Grp_Path}/Fig4.png')
 
-fig.savefig(f'{Grp_Path}/Info_Mass.pdf')
+fig.savefig(f'{Grp_Path}/Fig4.pdf')
 
 
 

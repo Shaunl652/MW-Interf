@@ -19,7 +19,7 @@ from Talbot.CSL.Coefficients import lnR_CSL_func
 
 import scipy.constants as const
 AMU = const.atomic_mass
-
+plt.rcParams.update({'font.size': 15})
 
 start_time = time()
 # Checks that the right number of commands are passed to the code
@@ -106,7 +106,7 @@ ExclusionLine = [line(r) for r in r_C_axis]
 # ===========================================================================================================================
 
 # Simulate random points
-Ns = [0,4000,7000,10000]
+Ns = [0,7000,10000,14000]
 from scipy.integrate import trapz
 from Bayesian.Info import H as infoH
 

@@ -25,7 +25,7 @@ for idx,M in enumerate(Masses):
     t_2Plot.append(t_2)
     
 import matplotlib.pyplot as plt
-
+plt.rcParams.update({'font.size': 15})
 fig, ax1 = plt.subplots()
 
 colour = 'tab:red'

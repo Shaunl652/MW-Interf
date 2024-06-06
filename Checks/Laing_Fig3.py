@@ -7,7 +7,7 @@ import numpy as np
 #import sys
 import matplotlib.pyplot as plt
 from pathlib import Path
-
+plt.rcParams.update({'font.size': 15})
 
 
 # First we set up the path where to save the graphs
@@ -19,7 +19,7 @@ Path(Grp_Path).mkdir(parents=True, exist_ok=True)
 # Read in Expt stuff first
 NPY_Path = "NPYs/MAQRO8/Experimental/Data"
 
-xaxis = [*range(0,16000,200)]
+xaxis = [*range(0,30000,200)]
 
 
 # Next we laod and plot the data from P(X|theta=0)
